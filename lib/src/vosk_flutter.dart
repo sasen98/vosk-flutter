@@ -8,7 +8,6 @@ import 'package:ffi/ffi.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:vosk_flutter/src/SpeakerModel.dart';
 import 'package:vosk_flutter/src/generated_vosk_bindings.dart';
 import 'package:vosk_flutter/src/utils.dart';
 import 'package:vosk_flutter/vosk_flutter.dart';
@@ -59,6 +58,8 @@ class VoskFlutterPlugin {
     return completer.future;
   }
 
+  /// Create a spaker model from model data located at the [modelPath].
+  /// See [ModelLoader]
   Future<SpeakerModel> createSpeakerModel(String modelPath) {
     final completer = Completer<SpeakerModel>();
 
@@ -119,7 +120,9 @@ class VoskFlutterPlugin {
 
   /// Set speaker model for the recognizer
   Future<void> setSpeakerModel(
-      int recognizerId, SpeakerModel speakerModel) async {
+    int recognizerId,
+    SpeakerModel speakerModel,
+  ) async {
     await _channel.invokeMethod('recognizer.setSpeakerModel', {
       'recognizerId': recognizerId,
       'speakerModelPath': speakerModel.path,
