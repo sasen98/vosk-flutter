@@ -5,9 +5,8 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url 'https://alphacephei.com/maven/'
-        }
+        jcenter()
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -19,9 +18,8 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url 'https://alphacephei.com/maven/'
-        }
+        jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -48,7 +46,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'net.java.dev.jna:jna:5.15.0@aar'
     implementation 'com.alphacephei:vosk-android:0.3.46@aar'
 //    implementation project(':models')
